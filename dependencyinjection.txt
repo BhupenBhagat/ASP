@@ -1,0 +1,111 @@
+Q2
+Using System;
+Using System.Collections.Generic;
+Using System.Linq;
+Using System.Text;
+Using System.Threading.Tasks;
+Namespace propertyinjection
+{
+    
+        Public interface text
+        {
+            Void print();
+        }
+        Class format : text
+        {
+            Public void print()
+            {
+                Console.WriteLine(“ ___”);
+            }
+        }
+    Public class Constructorinjection
+    {
+        Private text itext;
+        Public Constructorinjection(text t1)
+        {
+            This.itext=t1;
+        }
+        Public void print()
+        {
+            Itext.print();
+        }
+    }
+    Class constructor
+    {
+        Static void Main(string[] args)
+        {
+            Constructorinjection cs = new Constructorinjection(new format());
+            Cs.print();
+            Console.ReadKey();
+        }
+    }   
+}
+
+Q3
+Using System;
+Namespace propertyinjection
+{
+    Public interface Iset
+    {
+        Void print();
+    }
+    Public class servic : Iset
+    {
+        Public void print()
+        {
+            Console.WriteLine(“print…”);
+        }
+    }
+    Public class client
+    {
+        Private Iset _Iset;
+        Public void run(Iset serv)
+        {
+            This._Iset = serv;
+            Console.WriteLine(“Start”);
+            This._Iset.print();
+        }
+    }
+    Class method
+    {
+        Public static void Main(String[] args)
+        {
+            Client cn= new client();
+            Cn.run(new servic());
+            Console.ReadKey();
+        }
+    }
+}
+Q4using System;
+Public interface INotificationAction
+{
+    Void ActionNotification(string message);
+
+}
+Class simple
+{
+    INotificationAction task = null;
+    Public void notify(INotificationAction at, string message)
+    {
+        This.task = at;
+        Task.ActionNotification(message);
+    }
+}
+Class EvenlogWriter : INotificationAction
+{
+    Public void ActionNotification(string message) 
+    { 
+        Console.WriteLine(“Click on Bell icon to get notification”);
+    }
+}
+Class Program
+{
+    Static void Main(String[] args)
+    {
+        EvenlogWriter elw= new EvenlogWriter();
+        Simple at= new simple();
+        At.notify(elw, “to logg”);
+        Console.ReadKey();
+    }
+}
+
